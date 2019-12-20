@@ -48,6 +48,21 @@ $ apt-cache madison docker-ce
 #指定版本安装(比如版本是17.09.1~ce-0~ubuntu)
 $ apt-get install -y docker-ce=17.09.1~ce-0~ubuntu
 
+1.安装所需的软件包 yum-utils、device-mapper-persistent-data和 lvm2
+
+$ sudo yum install -y yum-utils \
+    device-mapper-persistent-data \
+    lvm2
+
+2.设置稳定的库
+$ sudo yum-config-manager \
+       --add-repo \
+       https://download.docker.com/linux/centos/docker-ce.repo
+
+1.安装最新版本的Docker CE（如果需要安装特定的版本跳过此步骤，参考步骤2） 
+ $ sudo yum install docker-ce
+
+
 ```
 - 接受所有ip的数据包转发
 ```bash
