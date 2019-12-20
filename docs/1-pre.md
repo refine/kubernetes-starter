@@ -72,6 +72,17 @@ $ ufw disable
 #查看状态
 $ ufw status
 ```
+
+#### CentOS 7.0默认使用的是firewall作为防火墙
+查看防火墙状态
+```bash
+$ firewall-cmd --state
+#停止firewall
+$ systemctl stop firewalld.service
+#禁止firewall开机启动
+$ systemctl disable firewalld.service
+```
+
 #### 3.2 设置系统参数 - 允许路由转发，不对bridge的数据进行处理
 ```bash
 #写入配置文件
