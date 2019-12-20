@@ -9,7 +9,7 @@ WorkingDirectory=/var/lib/kubelet
 ExecStart={{BIN_PATH}}/kubelet \
   --address={{NODE_IP}} \
   --hostname-override={{NODE_IP}} \
-  --pod-infra-container-image=registry.cn-hangzhou.aliyuncs.com/imooc/pause-amd64:3.0 \
+  --pod-infra-container-image=registry.cn-hangzhou.aliyuncs.com/zhaoxin-edu/pause-amd64:3.0 \
   --kubeconfig=/etc/kubernetes/kubelet.kubeconfig \
   --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig \
   --cert-dir=/etc/kubernetes/ca \
@@ -24,7 +24,7 @@ ExecStart={{BIN_PATH}}/kubelet \
   --logtostderr=true \
   --v=2
 #kubelet cAdvisor 默认在所有接口监听 4194 端口的请求, 以下iptables限制内网访问
-ExecStartPost=/sbin/iptables -A INPUT -s 10.0.0.0/8 -p tcp --dport 4194 -j ACCEPT
+ExecStartPost=/sbin/iptables -A INPUT -s 10.10.0.0/8 -p tcp --dport 4194 -j ACCEPT
 ExecStartPost=/sbin/iptables -A INPUT -s 172.16.0.0/12 -p tcp --dport 4194 -j ACCEPT
 ExecStartPost=/sbin/iptables -A INPUT -s 192.168.0.0/16 -p tcp --dport 4194 -j ACCEPT
 ExecStartPost=/sbin/iptables -A INPUT -p tcp --dport 4194 -j DROP
